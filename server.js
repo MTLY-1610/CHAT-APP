@@ -8,7 +8,17 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-const users = {}
+const rooms = {}
+
+app.get('/', (rep, res)=>}{
+    re.sender('index', {rooms: rooms})
+})
+
+app.get('/:room',(res, req) => {
+    res.render('room', {roomName: req.params.room})
+})
+
+const users = {} 
 
 io.on ('connection', socket => {
     socket.on('new-user', name =>{
