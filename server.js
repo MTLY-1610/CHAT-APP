@@ -8,7 +8,7 @@ app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
-const rooms = {}
+const rooms = {name:{}}
 
 app.get('/', (rep, res)=>{
     res.render('index', {rooms: rooms})

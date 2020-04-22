@@ -8,11 +8,17 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="message-container"></div>
-    <form id="send-container">
-        <input type="text" id="message-input">
-        <button type="submit" id="send-button">SEND</button>
-    </form>
+    <div id="room-container">
+        <% Object.keys(rooms).forEach(room => { %>
+            <div><%= room %></div>
+            <a href="/<%= room %>">JOIN</a>
+        <% }) %>
+        <form action="/room" method="post">
+            <input name="room" type="text" required >
+            <button type="submit">New room</button>
+        </form>
+    </div>
+
     
 </body>                    
 </html>
