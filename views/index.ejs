@@ -13,12 +13,11 @@
             <div><%= room %></div>
             <a href="/<%= room %>">JOIN</a>
         <% }) %>
-        <form action="/room" method="post">
-            <input name="room" type="text" required >
-            <button type="submit">New room</button>
-        </form>
     </div>
-
+    <form action="/room" method="post">
+        <input name="room" type="text" required >
+        <button type="submit">New room</button>
+    </form>
     
 </body>                    
 </html>
