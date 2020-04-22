@@ -17,9 +17,14 @@ socket.on('user-connected', name => {
     appendMessage(`${name} joined the chat`)
 }) 
 
+socket.on('user-disconnected', name => {
+    appendMessage(`${name} left the chat`)
+}) 
+
 messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const message = messageInput.value
+    appendMessage(`$You: ${message}`)
     socket.emit('send-chat-message', message)
     messageInput.value = ''
 })
