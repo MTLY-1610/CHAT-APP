@@ -1,4 +1,13 @@
-const io = require('socket.io')(3000)
+const express = require ('express')
+const app = express()
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+
+app.set('view','./view')
+app.set('view engine','ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
+
 const users = {}
 
 io.on ('connection', socket => {
