@@ -4,7 +4,7 @@
   "description": "Simple Chat App using socket.io  node.js  and express.",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/MTLY-1610/CHAT-APP#readme",
   "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
