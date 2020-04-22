@@ -13,6 +13,13 @@ const rooms = {name:{}}
 app.get('/', (rep, res)=>{
     res.render('index', {rooms: rooms})
 })
+app.post('/room', (req, res) =>{
+    if (rooms[req.body.room] != null){
+        return res.redirect('/')
+    }
+    rooms[req.body.room] = { users:{}}
+    res.redirect(req.body.room)
+})
 
 app.get('/:room',(res, req) => {
     res.render('room', {roomName: req.params.room})
