@@ -2,6 +2,7 @@ const express = require ('express')
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
+const bcrypt = require('bcrypt')
 
 app.set('views','./views')
 app.set('view engine','ejs')
@@ -14,11 +15,13 @@ app.get('/', (req, res) => {
     res.render('index', {rooms: rooms})
 })
 
-app.post('/room', (req, res) =>{
+app.post('/room', async (req, res) =>{
     if (rooms[req.body.room] != null) {
         return res.redirect('/')
     }
-    rooms[req.body.room] = { users: {} }
+    rooms[req.body.room] = { users: {}, password: await bcrypt.hash(req.body.password, 10) }
+    console.log('rooms:', rooms)
+
     res.redirect(req.body.room)
     io.emit('room-created', req.body.room)
 })
