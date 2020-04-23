@@ -19,7 +19,11 @@ app.post('/room', async (req, res) =>{
     if (rooms[req.body.room] != null) {
         return res.redirect('/')
     }
-    rooms[req.body.room] = { users: {}, password: await bcrypt.hash(req.body.password, 10) }
+    if (req.body.isOpen) {
+        rooms[req.body.room] = { users: {} }
+    } else if (req.body.password) {
+        rooms[req.body.room] = {users: {}, password: await bcrypt.hash(req.body.password, 10)}
+    }
     console.log('rooms:', rooms)
 
     res.redirect(req.body.room)
