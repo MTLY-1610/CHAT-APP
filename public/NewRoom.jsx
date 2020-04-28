@@ -30,7 +30,7 @@ class NewRoom extends React.Component {
               <span>Room is:</span>
               <input type="radio" id="room-open"
                      name="isOpen"
-                     defaultValue={this.state.isOpen}
+                     value={true}
                      defaultChecked={true}
                      onChange={() => this.setState({isOpen: true})}
               />
@@ -39,7 +39,7 @@ class NewRoom extends React.Component {
 
               <input type="radio" id="room-closed"
                      name="isOpen"
-                     defaultValue={!this.state.isOpen}
+                     value={false}
                      onChange={() => this.setState({isOpen: false})}
               />
 
