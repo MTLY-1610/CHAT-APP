@@ -8,18 +8,17 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="NewRoom.jsx" type="text/babel"></script>
+    <script defer src="RoomBox.jsx" type="text/babel"></script>
     <script defer src="script.js"></script>
 </head>
 <body>
     <div id="room-container">
-        <% Object.keys(rooms).forEach(room => { %>
-            <div><%= room %></div>
-            <a href="/<%= room %>">JOIN</a>
-        <% }) %>
+
     </div>
+    <div id="room-box"></div>
     <form action="/room" method="post">
         <div id="new-room" style="display: inline-block"></div>
         <button type="submit">Add room</button>

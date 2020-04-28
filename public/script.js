@@ -3,6 +3,7 @@ const messageContainer = document.getElementById("message-container");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
+const roomTitle = document.getElementById('room-title');
 
 if (messageForm != null) {
   const name = prompt("what is your little name pumpkin?");
@@ -16,6 +17,10 @@ if (messageForm != null) {
     socket.emit("send-chat-message", roomName, message);
     messageInput.value = "";
   });
+}
+
+if (roomTitle) {
+  roomTitle.innerText += roomName;
 }
 
 socket.on("room-created", (room) => {
@@ -45,3 +50,4 @@ function appendMessage(message) {
   messageElement.innerText = message;
   messageContainer.appendChild(messageElement);
 }
+
