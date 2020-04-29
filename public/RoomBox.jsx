@@ -48,20 +48,41 @@ class RoomBox extends React.Component {
   render() {
     return (
         <div>
-          <h3>This is the room list</h3>
+          <h2>Rooms to join</h2>
+        <div>
+          <h4>Private</h4>
           <div>
-            {Object.keys(this.state.rooms).map((key, index) =>
+            {Object.keys(this.state.rooms)
+                .filter(key => this.state.rooms[key].isOpen === false)
+                .map((key, index) =>
+                    <div key={index} style={{display: 'flex'}}>
+                      <div>{key}</div>
+                      <input type="password" placeholder="password"
+                             onChange={this.setPassword}/>
+                      <button onClick={() => {
+                        this.join(key)
+                      }}>JOIN
+                      </button>
+                    </div>
+                )}
+          </div>
+
+          <h5>Open</h5>
+          <div>
+            {Object.keys(this.state.rooms)
+                .filter(key => this.state.rooms[key].isOpen === true)
+                .map((key, index) =>
                 <div key={index} style={{display: 'flex'}}>
                   <div>{key}</div>
-                  {
-                    this.state.rooms[key].isOpen === false ?
-                        <input type="password" placeholder="password"
-                               onChange={this.setPassword}/> : ''
-                  }
-                  <button onClick={() => { this.join(key) }}>JOIN</button>
+                  <button onClick={() => {
+                    this.join(key)
+                  }}>JOIN
+                  </button>
                 </div>
             )}
           </div>
+
+        </div>
         </div>
     )
   }
