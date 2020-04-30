@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <script>
         const roomName = "<%= roomName %>"
     </script>
@@ -12,12 +13,18 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <h1 id="room-title">Room:&nbsp;</h1>
-    <div id="message-container"></div>
-    <form id="send-container">
-        <input type="text" id="message-input">
-        <button type="submit" id="send-button">SEND</button>
-    </form>
+    <div id="grid-container">
+        <div id="content">
+            <h1 id="room-title">Room:&nbsp;</h1>
+            <div id="message-container"></div>
+            <form id="send-container">
+                <input type="text" id="message-input">
+                <button type="submit" id="send-button">SEND</button>
+            </form>
+        </div>
+    </div>
+
+
     
 </body>                    
 </html>

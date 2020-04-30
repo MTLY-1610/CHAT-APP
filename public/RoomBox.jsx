@@ -47,40 +47,44 @@ class RoomBox extends React.Component {
 
   render() {
     return (
-        <div>
+        <div id="room-list-container">
+          <div id="room-list-title">
           <h3>ROOMS</h3>
-        <div id="room-box-list">
-          <h5>PRIVATE</h5>
-          <div >
-            {Object.keys(this.state.rooms)
-                .filter(key => this.state.rooms[key].isOpen === false)
-                .map((key, index) =>
-                    <div key={index} style={{display: 'flex'}}>
-                      <div>{key}</div>
-                      <input type="password" placeholder="password"
-                             onChange={this.setPassword}/>
-                      <button onClick={() => {
-                        this.join(key)
-                      }}>JOIN
-                      </button>
-                    </div>
-                )}
           </div>
+          <div id="room-box-list">
+           
+            <div >
+            <h5>PRIVATE</h5>
+              {Object.keys(this.state.rooms)
+                  .filter(key => this.state.rooms[key].isOpen === false)
+                  .map((key, index) =>
+                      <div key={index} >
+                        <div>{key}</div>
+                        <input type="password" placeholder="password"
+                              onChange={this.setPassword}/>
+                        <button onClick={() => {
+                          this.join(key)
+                        }}>JOIN
+                        </button>
+                      </div>
+                  )}
+            </div>
 
-          <h5>PUBLIC</h5>
-                <div>
-            {Object.keys(this.state.rooms)
-                .filter(key => this.state.rooms[key].isOpen === true)
-                .map((key, index) =>
-                <div key={index} style={{display: 'flex'}}>
-                  <div>{key}</div>
-                  <button onClick={() => {
-                    this.join(key)
-                  }}>JOIN
-                  </button>
-                </div>
-            )}
-          </div>
+            
+                  <div>
+                  <h5>PUBLIC</h5>
+              {Object.keys(this.state.rooms)
+                  .filter(key => this.state.rooms[key].isOpen === true)
+                  .map((key, index) =>
+                  <div key={index}>
+                    <div>{key}</div>
+                    <button onClick={() => {
+                      this.join(key)
+                    }}>JOIN
+                    </button>
+                  </div>
+              )}
+            </div>
 
         </div>
         </div>

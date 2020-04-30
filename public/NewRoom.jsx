@@ -21,12 +21,13 @@ class NewRoom extends React.Component {
 
   render() {
     return (
-        <div>
+        <div id="new-room-container">
           <h3>CREATE A ROOM</h3>
-          <div>
+          <div id="room-name">
             <input name="room" type="text" required placeholder="room name"/>
-
-            <div style={{display: 'inline-block'}}>
+          </div>
+          <div id="new-room-pref-box">
+            <div>
               <span>Room is:</span>
               <input type="radio" id="room-open"
                      name="isOpen"
@@ -52,6 +53,7 @@ class NewRoom extends React.Component {
                          defaultValue=""/>
             }
           </div>
+          <button type="submit">Add room</button>
         </div>
     )
   }
