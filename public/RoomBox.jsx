@@ -68,7 +68,7 @@ class RoomBox extends React.Component {
           </div>
 
           <h5>PUBLIC</h5>
-          <div>
+                <div>
             {Object.keys(this.state.rooms)
                 .filter(key => this.state.rooms[key].isOpen === true)
                 .map((key, index) =>
