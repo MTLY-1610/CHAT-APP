@@ -3,7 +3,10 @@ const messageContainer = document.getElementById("message-container");
 const roomContainer = document.getElementById("room-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");
-const roomTitle = document.getElementById('room-title');
+const roomTitle = document.getElementById("room-title");
+const userList = document.getElementById("userList");
+
+const usersInRoom = [];
 
 if (messageForm != null) {
   const name = prompt("what is your name?");
@@ -43,6 +46,16 @@ socket.on("user-connected", (name) => {
 
 socket.on("user-disconnected", (name) => {
   appendMessage(`${name} left the chat`);
+  const index = usersInRoom.indexOf(name);
+  if (index !== -1) {
+    usersInRoom.splice(index, 1);
+    outputRoomUsers();
+  }
+});
+
+socket.on("room-users", ({ room, users }) => {
+  usersInRoom.push(users);
+  outputRoomUsers();
 });
 
 function appendMessage(message) {
@@ -51,3 +64,7 @@ function appendMessage(message) {
   messageContainer.appendChild(messageElement);
 }
 
+function outputRoomUsers() {
+  userList.innerHTML = `
+  ${usersInRoom.map((user) => `<li>${user}</li>`).join("")}`;
+}

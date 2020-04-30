@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const rooms = {};
+// const users = [];
 
 app.get("/", (req, res) => {
   res.render("index", { rooms: rooms });
@@ -87,6 +88,9 @@ io.on("connection", (socket) => {
     socket.join(room);
     rooms[room].users[socket.id] = name;
     socket.to(room).broadcast.emit("user-connected", name);
+    io.to(room).emit("room-users", {
+      users: name,
+    });
   });
   socket.on("send-chat-message", (room, message) => {
     socket.to(room).broadcast.emit("chat-message", {
