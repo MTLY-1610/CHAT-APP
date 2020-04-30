@@ -6,8 +6,8 @@ body {
 #grid-container {
     height: 100vh;
     display: grid;
-    grid-template-columns: 50px auto 50px;
-    grid-template-rows: 50px auto 50px;
+    grid-template-columns: 5vh auto 5vh;
+    grid-template-rows: 5vh auto 5vh;
 }
 
 #content {
@@ -25,12 +25,12 @@ body {
     align-items: center;
     justify-content: space-evenly;
     width: 220px;
-    height: 100%;
+   
 }
 
 #room-list-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
     width: 200px;
@@ -41,7 +41,7 @@ body {
     text-align: center;
     width: 100%;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 #new-room-container {
@@ -51,3 +51,71 @@ body {
     justify-content: space-between;
     width: 200px;
 }
+
+button {
+        background-color: whitesmoke; /* Green */
+        border: none;
+        color:  rgb(35, 86, 188);
+        padding: 5px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+}
+
+button:hover{
+    background-color: red; 
+    
+}
+#room-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#new-room-pref-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#radio-open-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 4rem;
+}
+#open{
+    display: flex;
+    
+}
+#open-text{
+    display: flex;
+}
+input{
+    background-color: rgb(35, 86, 188) ;
+    border: none;
+    box-shadow: none;
+    border-bottom: .5px solid white;
+    margin-bottom: 1rem;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+::placeholder{
+    font-size: 0.7rem;
+    color: whitesmoke;
+    font-style: italic;
+    letter-spacing: .2rem;
+    padding-left: 1rem;
+    
+}
+
+
+#closed{
+    display:flex;
+    flex-direction: column;
+}
+

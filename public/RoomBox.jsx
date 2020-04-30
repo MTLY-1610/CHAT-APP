@@ -50,7 +50,7 @@ class RoomBox extends React.Component {
     return (
       <div id="room-list-container">
         <div id="room-box-list">
-          <div>
+          <div id="room-list">
             <h5>PRIVATE ROOMS</h5>
             {Object.keys(this.state.rooms)
               .filter((key) => this.state.rooms[key].isOpen === false)
@@ -73,7 +73,7 @@ class RoomBox extends React.Component {
               ))}
           </div>
 
-          <div>
+          <div id="room-list">
             <h5>PUBLIC ROOMS</h5>
             {Object.keys(this.state.rooms)
               .filter((key) => this.state.rooms[key].isOpen === true)

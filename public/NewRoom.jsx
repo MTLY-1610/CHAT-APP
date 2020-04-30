@@ -27,33 +27,39 @@ class NewRoom extends React.Component {
             <input name="room" type="text" required placeholder="room name"/>
           </div>
           <div id="new-room-pref-box">
-            <div>
-              <span>Room is:</span>
-              <input type="radio" id="room-open"
-                     name="isOpen"
-                     value={true}
-                     defaultChecked={true}
-                     onChange={() => this.setState({isOpen: true})}
-              />
-
-              <label htmlFor="room-open">Open</label>
-
-              <input type="radio" id="room-closed"
-                     name="isOpen"
-                     value={false}
-                     onChange={() => this.setState({isOpen: false})}
-              />
-
-              <label htmlFor="room-closed">Closed</label>
+            <div id="radio-open-container">
+              <div id="open">
+                  <input type="radio" id="room-open"
+                        name="isOpen"
+                        value={true}
+                        defaultChecked={true}
+                        onChange={() => this.setState({isOpen: true})}
+                  />
+              </div>
+              <div id="open-text">
+                  <label htmlFor="room-open">Open</label>
+              </div>
             </div>
+            <div id="closed">
 
-            {
-              this.state.isOpen ? '' :
-                  <input name="password" type="password" placeholder="password"
-                         defaultValue=""/>
-            }
+                <input type="radio" id="room-closed"
+                      name="isOpen"
+                      value={false}
+                      onChange={() => this.setState({isOpen: false})}
+                />
+
+                <label htmlFor="room-closed">Closed</label>
+              
+
+              {
+                this.state.isOpen ? '' :
+                    <input id="close-password" name="password" type="password" placeholder="password"
+                          defaultValue=""/>
+              }
+            </div>
           </div>
-          <button type="submit">Add room</button>
+        
+          <button type="submit">ADD ROOM</button>
         </div>
     )
   }
