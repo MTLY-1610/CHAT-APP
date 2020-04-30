@@ -88,8 +88,15 @@ io.on("connection", (socket) => {
     socket.join(room);
     rooms[room].users[socket.id] = name;
     socket.to(room).broadcast.emit("user-connected", name);
+
+    let users = Object.keys(rooms[room].users);
+    let userListToReturn = [];
+    users.forEach((id) => {
+      userListToReturn.push(rooms[room].users[id]);
+    });
+
     io.to(room).emit("room-users", {
-      users: name,
+      users: userListToReturn,
     });
   });
   socket.on("send-chat-message", (room, message) => {
@@ -100,9 +107,13 @@ io.on("connection", (socket) => {
   });
   socket.on("disconnect", () => {
     getUserRooms(socket).forEach((room) => {
-      socket.broadcast.emit("user-disconnected", rooms[room].users[socket.id]);
-      const arrayifyObject = Object.keys(rooms[room].users);
-      if (arrayifyObject.length > 1) delete rooms[room].users[socket.id];
+      const usersInRoom = Object.keys(rooms[room].users);
+      socket.broadcast.emit(
+        "user-disconnected",
+        rooms[room].users[socket.id],
+        usersInRoom
+      );
+      if (usersInRoom.length > 1) delete rooms[room].users[socket.id];
       else delete rooms[room];
     });
   });

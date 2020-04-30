@@ -44,18 +44,17 @@ socket.on("user-connected", (name) => {
   appendMessage(`${name} joined the chat`);
 });
 
-socket.on("user-disconnected", (name) => {
+socket.on("user-disconnected", (name, usersInRoom) => {
   appendMessage(`${name} left the chat`);
   const index = usersInRoom.indexOf(name);
   if (index !== -1) {
     usersInRoom.splice(index, 1);
-    outputRoomUsers();
+    outputRoomUsers(usersInRoom);
   }
 });
 
-socket.on("room-users", ({ room, users }) => {
-  usersInRoom.push(users);
-  outputRoomUsers();
+socket.on("room-users", ({ users }) => {
+  outputRoomUsers(users);
 });
 
 function appendMessage(message) {
@@ -64,7 +63,8 @@ function appendMessage(message) {
   messageContainer.appendChild(messageElement);
 }
 
-function outputRoomUsers() {
+function outputRoomUsers(users) {
+  console.log(users);
   userList.innerHTML = `
-  ${usersInRoom.map((user) => `<li>${user}</li>`).join("")}`;
+  ${users.map((user) => `<li>${user}</li>`).join("")}`;
 }
