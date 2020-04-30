@@ -9,92 +9,92 @@
 //     <script defer src="RoomBox.jsx" type="text/babel"></script>
 //
 
-'use strict'
+"use strict";
 
 class RoomBox extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       rooms: {},
-      userPassword: ''
-    }
-    axios.get('/rooms')
-        .then((res) => {
-          if (res.data) {
-            this.setState({rooms: res.data})
-            console.log('data rooms:', this.state)
-          }
-        })
+      userPassword: "",
+    };
+    axios.get("/rooms").then((res) => {
+      if (res.data) {
+        this.setState({ rooms: res.data });
+        console.log("data rooms:", this.state);
+      }
+    });
   }
 
   join = (key) => {
-    const data = {password: this.state.userPassword, isOpen:this.state.rooms[key].isOpen }
-    axios.post('/' + key, data)
-        .then(res => {
-          console.log('res', res)
-          if (typeof res.data.redirect == 'string') {
-            window.location = res.data.redirect
-          }
-        })
-        .catch(err => {
-
-        })
-  }
+    const data = {
+      password: this.state.userPassword,
+      isOpen: this.state.rooms[key].isOpen,
+    };
+    axios
+      .post("/" + key, data)
+      .then((res) => {
+        console.log("res", res);
+        if (typeof res.data.redirect == "string") {
+          window.location = res.data.redirect;
+        }
+      })
+      .catch((err) => {});
+  };
 
   setPassword = (event) => {
-    this.setState({userPassword: event.target.value})
-  }
+    this.setState({ userPassword: event.target.value });
+  };
 
   render() {
     return (
-        <div id="room-list-container">
-          <div id="room-list-title">
-          <h3>ROOMS</h3>
+      <div id="room-list-container">
+        <div id="room-box-list">
+          <div>
+            <h5>PRIVATE ROOMS</h5>
+            {Object.keys(this.state.rooms)
+              .filter((key) => this.state.rooms[key].isOpen === false)
+              .map((key, index) => (
+                <div key={index}>
+                  <div>{key}</div>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    onChange={this.setPassword}
+                  />
+                  <button
+                    onClick={() => {
+                      this.join(key);
+                    }}
+                  >
+                    JOIN
+                  </button>
+                </div>
+              ))}
           </div>
-          <div id="room-box-list">
-           
-            <div >
-            <h5>PRIVATE</h5>
-              {Object.keys(this.state.rooms)
-                  .filter(key => this.state.rooms[key].isOpen === false)
-                  .map((key, index) =>
-                      <div key={index} >
-                        <div>{key}</div>
-                        <input type="password" placeholder="password"
-                              onChange={this.setPassword}/>
-                        <button onClick={() => {
-                          this.join(key)
-                        }}>JOIN
-                        </button>
-                      </div>
-                  )}
-            </div>
 
-            
-                  <div>
-                  <h5>PUBLIC</h5>
-              {Object.keys(this.state.rooms)
-                  .filter(key => this.state.rooms[key].isOpen === true)
-                  .map((key, index) =>
-                  <div key={index}>
-                    <div>{key}</div>
-                    <button onClick={() => {
-                      this.join(key)
-                    }}>JOIN
-                    </button>
-                  </div>
-              )}
-            </div>
-
+          <div>
+            <h5>PUBLIC ROOMS</h5>
+            {Object.keys(this.state.rooms)
+              .filter((key) => this.state.rooms[key].isOpen === true)
+              .map((key, index) => (
+                <div key={index}>
+                  <div>{key}</div>
+                  <button
+                    onClick={() => {
+                      this.join(key);
+                    }}
+                  >
+                    JOIN
+                  </button>
+                </div>
+              ))}
+          </div>
         </div>
-        </div>
-    )
+      </div>
+    );
   }
-
 }
 
-const newRoomBox = document.getElementById('room-box')
-ReactDOM.render(<RoomBox/>, newRoomBox)
-
-
-
+const newRoomBox = document.getElementById("room-box");
+ReactDOM.render(<RoomBox />, newRoomBox);

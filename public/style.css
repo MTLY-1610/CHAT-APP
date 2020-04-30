@@ -12,22 +12,23 @@ body {
 
 #content {
     grid-area: 2/2;
-    background-color: rgb(35,86,188);
+    background-color: rgb(35, 86, 188);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
 }
 
 #center-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 220px;
+    height: 100%;
 }
 
-#room-list-container{
+#room-list-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -37,9 +38,10 @@ body {
 
 #room-box-list {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 #new-room-container {
@@ -48,5 +50,4 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     width: 200px;
-    
 }
