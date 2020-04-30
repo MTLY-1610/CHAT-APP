@@ -53,7 +53,10 @@ app.post("/:room", (req, res) => {
   // if (rooms[req.params.room] == null) {
   //     return res.redirect('/')
   // }
-
+  if (req.body.isOpen === true) {
+    res.send({ redirect: "/" + req.params.room });
+    return;
+  }
   const password = req.body.password;
   const hash = rooms[req.params.room].password;
 
