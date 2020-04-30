@@ -28,7 +28,7 @@ class RoomBox extends React.Component {
   }
 
   join = (key) => {
-    const data = {password: this.state.userPassword}
+    const data = {password: this.state.userPassword, isOpen:this.state.rooms[key].isOpen }
     axios.post('/' + key, data)
         .then(res => {
           console.log('res', res)
