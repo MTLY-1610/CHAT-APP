@@ -40,23 +40,27 @@ class NewRoom extends React.Component {
                   <label htmlFor="room-open">Open</label>
               </div>
             </div>
-            <div id="closed">
-
-                <input type="radio" id="room-closed"
-                      name="isOpen"
-                      value={false}
-                      onChange={() => this.setState({isOpen: false})}
-                />
-
-                <label htmlFor="room-closed">Closed</label>
-              
-
-              {
-                this.state.isOpen ? '' :
-                    <input id="close-password" name="password" type="password" placeholder="password"
-                          defaultValue=""/>
-              }
-            </div>
+            <div id="radio-closed-container">
+              <div id="closed">
+                      <div id="special-close-box">
+                        <input type="radio" id="room-closed"
+                              name="isOpen"
+                              value={false}
+                              onChange={() => this.setState({isOpen: false})}
+                        />
+                      </div>
+                      <div id="closed-text">
+                        <label htmlFor="room-closed">Closed</label>
+                      </div>
+              </div>
+              <div id="close-input">
+                {
+                  this.state.isOpen ? '' :
+                      <input id="close-password" name="password" type="password" placeholder="password"
+                            defaultValue=""/>
+                }
+              </div>
+            </div>  
           </div>
         
           <button type="submit">ADD ROOM</button>

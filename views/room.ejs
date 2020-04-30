@@ -15,15 +15,27 @@
 <body>
     <div id="grid-container">
         <div id="content">
-            <h1 id="room-title">Room:&nbsp;</h1>
-            <ul id="userList">
-                Users:
-              </ul>
-            <div id="message-container"></div>
-            <form id="send-container">
-                <input type="text" id="message-input">
-                <button type="submit" id="send-button">SEND</button>
-            </form>
+            <div id="chat-room-container">
+                <div id="room-info">
+                    <h1 id="room-title">Room:</h1>
+                    <h1 id="room-id"></h1>
+
+                    <ul id="userList">
+                        Users:
+                    </ul>
+                </div>
+                <div id="message-super-container">
+                    <div id="message-container"></div>
+                </div>
+                <div id="message-box-container">
+                    <div id="message-box">
+                        <form id="send-container">
+                            <input type="text" id="message-input">
+                            <button type="submit" id="send-button">SEND</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -47,7 +47,7 @@ body {
 #new-room-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     width: 200px;
 }
@@ -74,24 +74,46 @@ button:hover{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 200px;
 
 }
 #new-room-pref-box{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 200px;
 }
 #radio-open-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 4rem;
+    width: 6rem;
 }
 #open{
     display: flex;
     
 }
 #open-text{
+    display: flex;
+}
+#radio-closed-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#closed{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 6rem;
+}
+#special-close-box{
+    display: flex;
+}
+#closed-text{
+    display: flex;
+}
+#close-input{
     display: flex;
 }
 input{
@@ -119,3 +141,48 @@ textarea:focus, input:focus{
     flex-direction: column;
 }
 
+
+#chat-room-container{
+
+    display: grid;
+    grid-template-columns: 10vh auto 10vh;
+    grid-template-rows: 10vh auto 10vh;
+    
+    height: 100%;
+    width: 100%;
+}
+#message-super-container{
+    grid-area:2/2;
+    background-color: whitesmoke;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  
+}
+#message-container{
+    display: flex;
+    background-color: whitesmoke;
+    height: 90%;
+    width: 70%;
+    overflow-y:scroll; 
+    overflow-x:hidden; 
+}
+#message-box-container{
+    width: 100%;
+    grid-area: 3/2;
+   
+
+}
+#message-box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+#message-input{
+    width:60vw;
+}
