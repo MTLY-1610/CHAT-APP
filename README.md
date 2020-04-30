@@ -13,3 +13,7 @@ run with npm run start
 
 # NOTES
 This is a first draft that, due to an overcrowded timetable, was limited to a strict minimum but will be bettered after deadline.
+(ejs was used at first but we then became useless when we introduced react components)
+
+# LINK
+https://github.com/MTLY-1610/CHAT-APP
