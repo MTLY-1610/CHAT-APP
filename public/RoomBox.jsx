@@ -48,10 +48,10 @@ class RoomBox extends React.Component {
   render() {
     return (
         <div>
-          <h2>Rooms to join</h2>
-        <div>
-          <h4>Private</h4>
-          <div>
+          <h3>ROOMS</h3>
+        <div id="room-box-list">
+          <h5>PRIVATE</h5>
+          <div >
             {Object.keys(this.state.rooms)
                 .filter(key => this.state.rooms[key].isOpen === false)
                 .map((key, index) =>
@@ -67,7 +67,7 @@ class RoomBox extends React.Component {
                 )}
           </div>
 
-          <h5>Open</h5>
+          <h5>PUBLIC</h5>
           <div>
             {Object.keys(this.state.rooms)
                 .filter(key => this.state.rooms[key].isOpen === true)

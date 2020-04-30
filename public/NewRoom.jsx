@@ -22,7 +22,7 @@ class NewRoom extends React.Component {
   render() {
     return (
         <div>
-          <h3>Add new room</h3>
+          <h3>CREATE A ROOM</h3>
           <div>
             <input name="room" type="text" required placeholder="room name"/>
 

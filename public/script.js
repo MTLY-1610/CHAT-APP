@@ -6,7 +6,7 @@ const messageInput = document.getElementById("message-input");
 const roomTitle = document.getElementById('room-title');
 
 if (messageForm != null) {
-  const name = prompt("what is your little name pumpkin?");
+  const name = prompt("what is your name?");
   appendMessage("you joined");
   socket.emit("new-user", roomName, name);
 
