@@ -110,6 +110,7 @@ button:hover{
 }
 #special-close-box{
     display: flex;
+    flex-direction: row;
 }
 #closed-text{
     display: flex;
@@ -181,7 +182,7 @@ textarea:focus, input:focus{
     justify-content:flex-start;
     
     background-color: whitesmoke;
-    width: 10%;
+    width: 30%;
     height: 100%;
     margin-right: 10px;
     
@@ -199,7 +200,7 @@ textarea:focus, input:focus{
     flex-direction: column;
     justify-content: flex-start;
     background-color: whitesmoke;
-    width: 90%;
+    width: 70%;
     height: 100%;
     overflow-y:scroll; 
     overflow-x:hidden; 
@@ -227,7 +228,7 @@ textarea:focus, input:focus{
     width: 90%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     #chat-room-container{
         display: grid;
         grid-template-columns: 10% auto 10%;
@@ -235,6 +236,7 @@ textarea:focus, input:focus{
         
         height: 100%;
         width: 100%;
+        
     }
    #room-title{
        font-size: 1rem;
@@ -242,6 +244,7 @@ textarea:focus, input:focus{
    #users{
     display: none;
    }
+
     #message-box{
         display: flex;
         flex-direction: row;
@@ -249,6 +252,9 @@ textarea:focus, input:focus{
         align-items: center;
         justify-content: center;
         
+    }
+    #send-container{
+        margin-top: 10px;
     }
     button{
         background-color: whitesmoke; /* Green */
